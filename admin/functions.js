@@ -4,7 +4,11 @@ function validasiFile() {
   var pathFile = inputFile.value;
   var ekstensiOk = /(\.jpg|\.png)$/i;
   if (!ekstensiOk.exec(pathFile)) {
-    Swal.fire("", "Silakan upload file yang memiliki ekstensi (.jpg)", "info");
+    Swal.fire(
+      "",
+      "Silakan upload file yang memiliki ekstensi (.jpg dan .png)",
+      "info"
+    );
     inputFile.value = "";
     return false;
   } else {

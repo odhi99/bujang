@@ -73,16 +73,28 @@ if (isset($_SESSION['id'])) {
       </div>
       <div class="col-sm-12 col-md-6 col-lg-6">
         <form action="">
-          <input type="text" id="nama" value="<?= $data_user['nama'] ?> " class="box">
-          <input type="text" id="hp" value="<?= $data_user['hp'] ?>" class="box">
-          <input type="" min="1" value="<?= $data['jumlah'] ?>" class="box" readonly>
-          <input type="number" id="jumlah" min="1" value="1" onchange="hitungHarga()" class="box">
-          <input type="text" id="harga" value="<?= number_format($data['harga']) ?>" class="box" readonly>
+          <input type="text" id="nama" value="<?= $data_user['nama'] ?> " placeholder="Nama" class="box">
+          <input type="text" id="hp" value="<?= $data_user['hp'] ?>" class="box" placeholder="No Hp">
+          <input type="" min="1" value="<?= $data['jumlah'] ?>" class="box" readonly placeholder="Stok">
+          <input type="number" id="jumlah" min="1" value="1" onchange="hitungHarga()" class="box" placeholder="Jumlah Pesanan">
+          <input type="text" id="harga" value="<?= number_format($data['harga']) ?>" class="box" readonly placeholder="Harga">
           <button type="button" class="btn" onclick="reserve()" id="reservasi-btn" data-id="<?= $data['id_produk'] ?>">Submit</button>
         </form>
       </div>
     </div>
   </section>
+
+
+  <script type="text/javascript">
+    function hitungHarga() {
+      let harga = <?= $data['harga'] ?>;
+      let jumlah = $('#jumlah').val()
+
+      document.getElementById('harga').value = (harga * jumlah).toLocaleString()
+
+
+    }
+  </script>
 
   <!-- SWIPER -->
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

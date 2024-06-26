@@ -38,7 +38,7 @@
             </div>
 
             <button type="button" class="btn btn-primary input" id="login">Submit</button>
-            <a href="index.php" class="btn btn-primary " id="login">Masuk sebagai tamu</a>
+
             <div class="d-flex justify-content-end">
 
                 <a href="regist.php">Belum Pernah Daftar?</a>
@@ -56,47 +56,47 @@
     <script src="assets/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <script type="text/javascript">
-    $('#login').click(() => {
-        let username = $('#username').val();
-        let password = $('#password').val();
-        let level = $('#level').val();
+        $('#login').click(() => {
+            let username = $('#username').val();
+            let password = $('#password').val();
+            let level = $('#level').val();
 
-        if (username == "" || password == "") {
-            Swal.fire(
-                '',
-                'Mohon lengkapi formulir',
-                'question'
-            )
-        } else {
-            $.ajax({
-                type: "POST",
-                url: "auth/login.php",
-                data: {
-                    username: username,
-                    password: password,
-                    level: level,
-                },
+            if (username == "" || password == "") {
+                Swal.fire(
+                    '',
+                    'Mohon lengkapi formulir',
+                    'question'
+                )
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "auth/login.php",
+                    data: {
+                        username: username,
+                        password: password,
+                        level: level,
+                    },
 
-                success: (res) => {
-                    console.log(res);
-                    if (res === "user") {
-                        window.location = "index.php";
+                    success: (res) => {
+                        console.log(res);
+                        if (res === "user") {
+                            window.location = "index.php";
 
-                    } else if (res === "admin") {
-                        window.location = "admin/index.php";
-                    } else if (res === "superadmin") {
-                        window.location = "superadmin/index.php";
-                    } else {
-                        Swal.fire("Gagal!",
-                            "Login tidak berhasil, silahkan cek user dan password anda.",
-                            "error");
+                        } else if (res === "admin") {
+                            window.location = "admin/index.php";
+                        } else if (res === "superadmin") {
+                            window.location = "superadmin/index.php";
+                        } else {
+                            Swal.fire("Gagal!",
+                                "Login tidak berhasil, silahkan cek user dan password anda.",
+                                "error");
+                        }
                     }
-                }
-            })
-        }
+                })
+            }
 
 
-    })
+        })
     </script>
 
 
